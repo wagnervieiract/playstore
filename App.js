@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Cabecalho from './src/components/Cabecalho';
 import Botao from './src/components/botao';
+import JOGOS from './src/components/jogos';
+import DADOS from './src/dados/dadosJogos'
 
 export default function App() {
   return (
@@ -33,6 +35,21 @@ logo2="musical-notes"
 texto2="musicas"
 cor2="purple"
 />
+
+<View>
+  <FlatList
+  horizontal={true}
+  data={DADOS}
+  keyExtractor={(item)=>item.id}
+  renderItem={({item})=>(
+    <JOGOS
+    titulo={item.nome}
+    imagem={item.imagem}
+    valor={item.valor}
+    />
+  )}
+  />
+</View>
 </View>
 
   );
